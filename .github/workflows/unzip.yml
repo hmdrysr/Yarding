@@ -1,0 +1,25 @@
+name: Unzip
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  unzip:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unzip into the repo root
+        run: |
+          Z=$(ls *.zip | head -n1)
+          mkdir tmp
+          unzip -q -o "$Z" -d tmp
+          D=$(find tmp -maxdepth 1 -mindepth 1 -type d | head -n1)
+          rm -rf "$D/.github/workflows"
+          cp -a "$D"/. .
+          rm -rf tmp "$Z"
+      - name: Commit
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add -A
+          git commit -m "Yarding v0"
+          git push
