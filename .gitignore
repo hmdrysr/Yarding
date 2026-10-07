@@ -1,0 +1,9 @@
+node_modules/
+*.log
+.DS_Store
+Thumbs.db
+# never commit books or backups
+yarding-*.json
+yarding-*.xlsx
+latest.json
+*.keystore

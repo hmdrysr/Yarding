@@ -1,0 +1,20 @@
+{
+  "name": "yarding",
+  "version": "0.0.0",
+  "description": "Yard accounting for shipyards and ship-recycling yards. One HTML file, offline-first, public domain.",
+  "private": true,
+  "license": "CC0-1.0",
+  "scripts": {
+    "check": "node tools/check.js",
+    "test": "node tests/smoketest.js",
+    "test:gate": "node server/gate.test.js",
+    "test:all": "npm run check && npm test && npm run test:gate"
+  },
+  "engines": { "node": ">=20" },
+  "devDependencies": {
+    "fake-indexeddb": "6.2.5",
+    "jsdom": "30.1.1",
+    "jsqr": "1.4.0",
+    "xlsx": "0.18.5"
+  }
+}
